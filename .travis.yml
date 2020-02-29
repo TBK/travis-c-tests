@@ -1,47 +1,20 @@
-dist: trusty
 language: c
-services: docker
+
+arch:
+  - amd64
+  - arm64
+  - ppc64le
+  - s390x
+
+os:
+  - linux
+  - osx
+  - windows
+
+dist: trusty
+
 sudo: false
 
-matrix:
-  include:
-    # Linux - Glibc
-    - env: TARGET=aarch64-unknown-linux-gnu
-    - env: TARGET=arm-unknown-linux-gnueabi
-    - env: TARGET=armv7-unknown-linux-gnueabihf
-    - env: TARGET=i686-unknown-linux-gnu
-    - env: TARGET=mips-unknown-linux-gnu
-    - env: TARGET=mips64-unknown-linux-gnuabi64
-    - env: TARGET=mips64el-unknown-linux-gnuabi64
-    - env: TARGET=mipsel-unknown-linux-gnu
-    - env: TARGET=powerpc-unknown-linux-gnu
-    - env: TARGET=powerpc64-unknown-linux-gnu
-    - env: TARGET=powerpc64le-unknown-linux-gnu
-    - env: TARGET=s390x-unknown-linux-gnu
-    - env: TARGET=x86_64-unknown-linux-gnu
-    # Linux - Musl libc
-    - env: TARGET=i686-unknown-linux-musl
-    - env: TARGET=x86_64-unknown-linux-musl
-    - env: TARGET=armv7-unknown-linux-musleabihf
-    - env: TARGET=aarch64-unknown-linux-musl
-    - env: TARGET=powerpc64le-unknown-linux-musl
-    - env: TARGET=s390x-unknown-linux-musl
-    
-    # OSX
-    - env: TARGET=i686-apple-darwin
-      os: osx
-    - env: TARGET=x86_64-apple-darwin
-      os: osx
-
-    # *BSD
-    - env: TARGET=i686-unknown-freebsd
-    - env: TARGET=x86_64-unknown-freebsd
-    - env: TARGET=x86_64-unknown-netbsd
-
-    # Windows
-    - env: TARGET=i686-pc-windows-msvc
-    - env: TARGET=x86_64-pc-windows-msvc
-
 script:
-  - gcc -o hello hello.c
+  - $CC -o hello hello.c
   - ./hello
