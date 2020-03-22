@@ -11,6 +11,10 @@ os:
   - osx
   - windows
 
+compiler:
+  - gcc
+  - clang
+
 dist: trusty
 
 sudo: false
