@@ -19,6 +19,9 @@ dist: trusty
 
 sudo: false
 
+allow_failures:
+ - arch: s390x
+
 script:
   - $CC -o hello hello.c
   - ./hello
